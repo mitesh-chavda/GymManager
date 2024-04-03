@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNet.Identity;
+@model  GymManager.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+
+
+    @if (Model.HasPassword)
+    {
+        <a role="button" id="editButton" href="/Manage/ChangePassword" class="btn btn-primary mr-3"><i class="fa fa-lock"></i> Change password</a>
+        if (User.IsInRole("CanManageEmployees")) 
+        { 
+            <a role="button" id="editButton" href="/Employees/Edit/@User.Identity.GetUserId()" class="btn btn-primary"><i class="fa fa-edit"></i> Edit profile data</a>
+        }
+    }
+        else
+        {
+            @Html.ActionLink("Create", "SetPassword")
+        }
+</div>

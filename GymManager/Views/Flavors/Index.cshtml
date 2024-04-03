@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "Manage Flavors";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<hr>
+
+<div class="row">
+    <div class="col-md-8 col-lg-4">
+        <form id="flavorForm">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <label class="input-group-text"><i class="fa fa-grin-tongue"></i></label>
+                </div>
+                <input class="form-control" id="name" name="name" placeholder="Flavor" required>
+                <button type="submit" class="btn btn-primary ml-3"><i class="fa fa-plus-circle"></i> Add new</button>
+            </div>
+            <p id="errorname"></p>
+
+            @Html.AntiForgeryToken()
+        </form>
+    </div>
+</div>
+
+<hr>
+
+<div class="table-responsive">
+    <table id="flavors" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th width="3%"></th>
+                <th width="3%"></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+@Html.Partial("_FlavorModal")
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/scripts/GymManager/gm-handle-flavors-datatable-and-forms.js")
+}

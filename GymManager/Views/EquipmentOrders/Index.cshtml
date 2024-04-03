@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewBag.Title = "Equipment Orders";
+}
+
+<h2>@ViewBag.Title</h2>
+<a href="/Orders/Equipment/New" class="btn btn-primary mt-3" role="button">New Order</a>
+<hr>
+
+<div class="table-responsive">
+    <table id="equipmentOrders" class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Orderer</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Type</th>
+                <th>Quantity</th>
+                <th>Desired Delivery Date</th>
+                <th width="14%">Status</th>
+                <th width="3%"></th>
+                <th width="3%"></th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+@section scripts 
+{
+    @Scripts.Render("~/Scripts/datatables/dataTables.buttons.min.js")
+    @Scripts.Render("~/Scripts/datatables/buttons.flash.min.js")
+    @Scripts.Render("~/Scripts/datatables/buttons.html5.min.js")
+    @Scripts.Render("~/Scripts/datatables/buttons.print.min.js")
+    @Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js")
+    @Scripts.Render("https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js")
+    @Scripts.Render("~/Scripts/GymManager/gm-handle-equipment-order-datatable.js")
+}

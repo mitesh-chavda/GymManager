@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Edit Malfunction";
+}
+
+<h2>@ViewBag.Title</h2>
+<hr />
+<h4 id="equipmentSerialNumber">Equipment Serial Number: </h4>
+<hr />
+<div class="row">
+    <div class="col-md-8 col-lg-4">
+        @Html.Partial("_MalfunctionForm")
+    </div>
+</div>
+
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/Scripts/GymManager/gm-handle-edit-malfunction-form.js");
+}
+

@@ -1,0 +1,51 @@
+﻿<nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a href="/" class="navbar-brand"><i class="fas fa-dumbbell"></i> <span class="logo">Gym Manager</span></a>
+
+        <div class="navbar-collapse collapse" id="navbarSupportedContent">
+            <ul class="nav navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"  href="/Equipment" role="button" aria-haspopup="true" aria-expanded="false">Equipment</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Equipment">All Equipment</a>
+                        <a class="dropdown-item" href="/Equipment/New">Add New</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/Malfunctions" role="button" aria-haspopup="true" aria-expanded="false">Malfunctions</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Malfunctions">All Malfunctions</a>
+                        <a class="dropdown-item" href="/Malfunctions/New">New Malfunction</a>
+                        <a class="dropdown-item" href="/Malfunctions/History">Equipment Malfunction History</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"  href="/Supplements" role="button" aria-haspopup="true" aria-expanded="false">Supplements</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Supplements">All Supplements</a>
+                        <a class="dropdown-item" href="/Supplements/New">Add New</a>
+                        <a class="dropdown-item" href="/Flavors">Manage Flavors</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"  href="/Orders/Equipment" role="button" aria-haspopup="true" aria-expanded="false">Orders</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/Orders/Equipment">All Equipment Orders</a>
+                        <a class="dropdown-item" href="/Orders/Equipment/New">New Equipment Order</a>
+                    </div>
+                </li>
+                @if (User.IsInRole("CanManageEmployees"))
+                {
+                    <li class="nav-item">@Html.ActionLink("Employees", "Index", "Employees", null, new { @class = "nav-link" })</li>
+                }
+                <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+            </ul>
+            <div>@Html.Partial("_LoginPartial")</div>
+        </div>
+    </div>
+</nav>
+

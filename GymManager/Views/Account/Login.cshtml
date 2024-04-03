@@ -1,0 +1,58 @@
+﻿@using GymManager.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+<div class="row">
+    <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 form-container rounded px-5 py-4">
+        <h2 class="text-center"><i class="fas fa-dumbbell"></i> <span class="logo">Gym Manager</span></h2>
+        <hr />
+        <h2 class="mb-3 text-center">@ViewBag.Title</h2>
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                    </div>
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email" })
+                </div>
+                <div class="mb-2">@Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })</div>
+
+                <div class="input-group mt-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password" })
+                </div>
+                <div>@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })</div>
+
+                <div class="form-group mt-2">
+                        <div class="checkbox">
+                            @Html.CheckBoxFor(m => m.RememberMe)
+                            @Html.LabelFor(m => m.RememberMe)
+                        </div>
+                </div>
+                <div class="form-group">
+                        <input type="submit" value="Log in" class="btn btn-primary btn-block btn-lg" />
+                </div>
+                <p>
+                    @Html.ActionLink("Register as a new employee", "Register")
+                </p>
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@section Styles {
+    <link href="@Url.Content("~/Content/LoginAndRegisterStyle.css")" rel="stylesheet" type="text/css" />
+}
